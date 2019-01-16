@@ -1,0 +1,276 @@
+<script>
+    var mpReservedGroup = null,
+        mpReleaseSoonGroup = null,
+        mpReleaseSoonLots = null,
+        mpForSaleLots = null,
+        mpAllSoldLots = null,
+        mpExtraLinesWhite = null,
+        mpExtraLinesPink = null,
+        mpExtraMarkers = null,
+        mpAllSoldGroup = null,
+        lotsFeatures = [];
+
+    {% set contactPageURL = craft.entries.section('enquire').first().url %}
+
+    {# Reserved Gropus #}
+    {% set reservedGroups = craft.categories.group('lotsGroups').search('groupStatus:reserved') %}
+
+    // Get Reserved Group
+    mpReservedGroup = {
+        'type': 'FeatureCollection',
+        'features': [
+            {% for group in reservedGroups %}
+            {
+                'type': 'Feature',
+                "properties": {
+                    "name": '{{ group.title }}',
+                    "marker": {
+                        "type":"group",
+                        "mText": '{{ group.groupMarkerText }}',
+                        "coordinates": {% if group.groupMarkerCoordinates != '' %}{{ group.groupMarkerCoordinates }}{% else %}[]{% endif %},
+                        "class": "map-markers-white",
+                        "angle": "map-markers-h"
+                    }
+                },
+                'geometry': {
+                    'type': 'Polygon',
+                    'coordinates': {{ group.groupPolygonCoordinates }}
+                }
+            },
+            {% endfor %}
+        ]
+    };
+    {# End Reserved Groups #}
+
+    {# Release soon Gropus #}
+    {% set releaseSoonGroups = craft.categories.group('lotsGroups').search('groupStatus:releaseSoon') %}
+
+    // Get Release Soon Group
+    mpReleaseSoonGroup = {
+        'type': 'FeatureCollection',
+        'features': [
+            {% for group in releaseSoonGroups %}
+            {
+                'type': 'Feature',
+                "properties": {
+                    "name": '{{ group.title }}',
+                    "marker": {
+                        "type":"group",
+                        "name": '{{ group.title }}',
+                        /*"mText": '{{ group.groupMarkerText }}<br><a href="{{ contactPageURL }}?lotGroup={{ group.title }}">Join the waitlist</a>',*/
+                        "mText": '{{ group.groupMarkerText }}',
+                        "contactPageURL": '{{ contactPageURL }}',
+                        "coordinates": {% if group.groupMarkerCoordinates != '' %}{{ group.groupMarkerCoordinates }}{% else %}[]{% endif %},
+                        "class": "map-markers-white",
+                        "angle": "map-markers-h"
+                    }
+                },
+                'geometry': {
+                    'type': 'Polygon',
+                    'coordinates': {{ group.groupPolygonCoordinates }}
+                }
+            },
+            {% endfor %}
+        ]
+    };
+    {# End Release Soon Group #}
+
+    {# Release soon Lots #}
+    {% for group in releaseSoonGroups %}
+        {% set lots = craft.entries.section('lots').search('lotGroup:'~group.title) %}
+
+        {% for lot in lots %}
+            {% if lot.lotPolygonCoordinates != '' %}
+                lotsFeatures.push({
+                    'type': 'Feature',
+                    "properties": {
+                        "name": "{{ lot.title }}"
+                    },
+                    'geometry': {
+                        'type': 'Polygon',
+                        'coordinates': {{ lot.lotPolygonCoordinates }}
+                    }
+                });
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+    // Get Release Soon Lots
+    if( lotsFeatures.length > 0 ) {
+        mpReleaseSoonLots = {
+            'type': 'FeatureCollection',
+            'features': lotsFeatures
+        };
+    }
+    {# End Release soon Lots #}
+
+    {# For sale Gropus #}
+    {% set forSaleGroups = craft.categories.group('lotsGroups').search('groupStatus:forSale') %}
+    {# End For sale Group #}
+
+    {# For sale Lots #}
+    lotsFeatures = [];
+    {% for group in forSaleGroups %}
+    {% set lots = craft.entries.section('lots').search('lotGroup:'~group.title) %}
+
+    {% for lot in lots %}
+    {% if lot.lotPolygonCoordinates != '' %}
+    lotsFeatures.push({
+        'type': 'Feature',
+        "properties": {
+            "name": "{{ lot.title }}",
+            "marker": {
+                "type":"lot",
+                "mText": "{% if lot.lotStatus == 'forSale' %}{{ lot.lotMarkerText }}{% else %}Sold{% endif %}",
+                "coordinates": {% if lot.lotMarkerCoordinates != '' %}{{ lot.lotMarkerCoordinates }}{% else %}[]{% endif %},
+                "class": "{% if lot.lotStatus == 'forSale' %}map-markers-white{% else %}map-markers-pink{% endif %}",
+                "angle": "map-markers-h"
+            },
+            "info": {
+                "lotTitle":'{{ lot.title }}',
+                "lotId":'{{ lot.lotId }}',
+                "lotGroup":'{{ lot.lotGroup.first }}',
+                "lotArea":'{{ lot.lotArea }}',
+                "houseArea":'{{ lot.houseArea }}',
+                "lotLevels":'{{ lot.levels }}',
+                "lotBedrooms":'{{ lot.bedrooms }}',
+                "lotImage":'{% if lot.lotImage.first %}{{ lot.lotImage.first.url }}{% endif %}',
+                "lotPlan":'{% if lot.lotPlan.first %}{{ lot.lotPlan.first.url }}{% endif %}',
+                "lotPlanPdf":'{% if lot.lotPlanPdf.first %}{{ lot.lotPlanPdf.first.url }}{% endif %}',
+                "lotAgentLogoImage":'{% if lot.lotAgentLogoImage.first %}{{ lot.lotAgentLogoImage.first.url }}{% endif %}',
+                "lotAgentEmail":'{{ lot.lotAgentEmail }}',
+                "contactPageURL": '{{ contactPageURL }}'
+            },
+            "clicked": false
+        },
+        'geometry': {
+            'type': 'Polygon',
+            'coordinates': {{ lot.lotPolygonCoordinates }}
+        }
+    });
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+
+    // Get For sale Lots
+    if( lotsFeatures.length > 0 ) {
+        mpForSaleLots = {
+            'type': 'FeatureCollection',
+            'features': lotsFeatures
+        };
+    }
+    {# End For sale Lots #}
+
+    {# All Sold Gropus #}
+    {% set allSoldGroups = craft.categories.group('lotsGroups').search('groupStatus:allSold') %}
+
+    // Get All Sold Group
+    mpAllSoldGroup = {
+        'type': 'FeatureCollection',
+        'features': [
+            {% for group in allSoldGroups %}
+            {
+                'type': 'Feature',
+                "properties": {
+                    "name": '{{ group.title }}',
+                    "marker": {
+                        "type":"group",
+                        "mText": '{{ group.groupMarkerText }}',
+                        "coordinates": {% if group.groupMarkerCoordinates != '' %}{{ group.groupMarkerCoordinates }}{% else %}[]{% endif %},
+                        "class": "map-markers-white",
+                        "angle": "map-markers-h"
+                    }
+                },
+                'geometry': {
+                    'type': 'Polygon',
+                    'coordinates': []
+                }
+            },
+            {% endfor %}
+        ]
+    };
+    {# End All Sold Group #}
+
+    {# All Sold Lots #}
+    lotsFeatures = [];
+    {% for group in allSoldGroups %}
+    {% set lots = craft.entries.section('lots').search('lotGroup:'~group.title) %}
+
+    {% for lot in lots %}
+    {% if lot.lotPolygonCoordinates != '' %}
+    lotsFeatures.push({
+        'type': 'Feature',
+        "properties": {
+            "name": "{{ lot.title }}"
+        },
+        'geometry': {
+            'type': 'Polygon',
+            'coordinates': {{ lot.lotPolygonCoordinates }}
+        }
+    });
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+
+    // Get For sale Lots
+    if( lotsFeatures.length > 0 ) {
+        mpAllSoldLots = {
+            'type': 'FeatureCollection',
+            'features': lotsFeatures
+        };
+    }
+    {# End For sale Lots #}
+
+    {# Extra lines, markers #}
+    {% set extraMasterplanInfo = craft.globals.getSetByHandle('masterplan') %}
+
+    mpExtraLinesWhite = {
+        'type': 'FeatureCollection',
+        'features': [
+            {% if extraMasterplanInfo.mastreplanExtralinesWhite is defined %}
+                {% for line in extraMasterplanInfo.mastreplanExtralinesWhite %}
+                {
+                    'type': 'Feature',
+                    "properties": {},
+                    'geometry': {
+                        'type': 'LineString',
+                        'coordinates': {{ line.coordinates }}
+                    }
+                },
+                {% endfor %}
+            {% endif %}
+        ]
+    };
+    mpExtraLinesPink = {
+        'type': 'FeatureCollection',
+        'features': [
+            {% if extraMasterplanInfo.mastreplanExtralinesPink is defined %}
+                {% for line in extraMasterplanInfo.mastreplanExtralinesPink %}
+                {
+                    'type': 'Feature',
+                    "properties": {},
+                    'geometry': {
+                        'type': 'LineString',
+                        'coordinates': {{ line.coordinates }}
+                    }
+                },
+                {% endfor %}
+            {% endif %}
+        ]
+    };
+    mpExtraMarkers = [
+        {% if extraMasterplanInfo.masterplanMarkers is defined %}
+            {% for marker in extraMasterplanInfo.masterplanMarkers %}
+            {
+                'coordinates': {{ marker.markerCoordinates }},
+                'property': {
+                    'text': '{{ marker.markerText }}',
+                    'angle': '{{ marker.markerAngle }}'
+                }
+            },
+            {% endfor %}
+        {% endif %}
+    ];
+    {# End Extra lines, markers #}
+
+</script>

@@ -1,0 +1,43 @@
+.letter{
+    position:absolute;
+    color:$white;
+    font-family:$FuturaStdBold;
+    font-size:rem(200);
+    line-height:1;
+
+    @media all and (max-width:$medium-breakpoint){
+        display:none;
+    }
+}
+.letter--m{
+    top:570px;
+    right:-44px;
+
+    .homepage &{
+        top:-110px;
+    }
+}
+.letter--a{
+    top:33px;
+    left:60px;
+}
+.letter--l{
+    right:60px;
+    bottom:95px;
+}
+.letter--b{
+    top:205px;
+    left:20px;
+}
+.letter--e{
+    top:53px;
+    right:190px;
+
+    @media all and (max-width:$large-breakpoint){
+        right:120px;
+    }
+}
+.letter--c{
+    bottom:220px;
+    left:60px;
+}

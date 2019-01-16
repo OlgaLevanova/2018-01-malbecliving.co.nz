@@ -1,0 +1,19 @@
+/* stylelint-disable */
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &::-ms-expand {
+        display: none;
+    }
+}
+.enquire-form{
+    input,
+    textarea{
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
+}
+input[type="submit"]{
+    cursor:pointer;
+}

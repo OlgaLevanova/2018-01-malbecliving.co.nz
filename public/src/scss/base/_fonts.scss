@@ -1,0 +1,41 @@
+@font-face {
+    font-family: CheltenhamBold;
+    font-style: normal;
+    font-weight: bold;
+    src: url('/fonts/Cheltenham-Bold.eot');
+    src: url('/fonts/Cheltenham-Bold.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/Cheltenham-Bold.woff2') format('woff2'),
+        url('/fonts/Cheltenham-Bold.woff') format('woff'),
+        url('/fonts/Cheltenham-Bold.ttf') format('truetype'),
+        url('/fonts/Cheltenham-Bold.svg#Cheltenham-Bold') format('svg');
+}
+
+@font-face {
+    font-family: FuturaStdBold;
+    src: url('/fonts/FuturaStd-Bold.eot');
+    src: url('/fonts/FuturaStd-Bold.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/FuturaStd-Bold.woff2') format('woff2'),
+        url('/fonts/FuturaStd-Bold.woff') format('woff'),
+        url('/fonts/FuturaStd-Bold.ttf') format('truetype'),
+        url('/fonts/FuturaStd-Bold.svg#FuturaStd-Bold') format('svg');
+}
+
+@font-face {
+    font-family: FuturaStdBookOblique;
+    src: url('/fonts/FuturaStd-BookOblique.eot');
+    src: url('/fonts/FuturaStd-BookOblique.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/FuturaStd-BookOblique.woff2') format('woff2'),
+        url('/fonts/FuturaStd-BookOblique.woff') format('woff'),
+        url('/fonts/FuturaStd-BookOblique.ttf') format('truetype'),
+        url('/fonts/FuturaStd-BookOblique.svg#FuturaStd-BookOblique') format('svg');
+}
+
+@font-face {
+    font-family: FuturaStdBook;
+    src: url('/fonts/FuturaStd-Book.eot');
+    src: url('/fonts/FuturaStd-Book.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/FuturaStd-Book.woff2') format('woff2'),
+        url('/fonts/FuturaStd-Book.woff') format('woff'),
+        url('/fonts/FuturaStd-Book.ttf') format('truetype'),
+        url('/fonts/FuturaStd-Book.svg#FuturaStd-Book') format('svg');
+}

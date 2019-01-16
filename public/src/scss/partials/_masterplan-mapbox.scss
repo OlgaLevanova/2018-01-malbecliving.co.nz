@@ -1,0 +1,430 @@
+.masterplan-mapbox-wrapper{
+    position:relative;
+    width:100%;
+    height:rem(600);
+}
+.masterplan-mapbox{
+    position:absolute !important;
+    top:0;
+    bottom:0;
+    width:100%;
+
+    img{
+        width:100%;
+    }
+}
+.map-marker{
+    div{
+        color:#FFFFFF;
+        background:#000000;
+        transform:rotate(-45deg);
+    }
+}
+.map-markers{
+    color:$pink;
+    font-family:$FuturaStdBold;
+    font-size:rem(9);
+    line-height:1;
+    text-align:center;
+    text-transform:uppercase;
+    opacity:0;
+
+    &-h{
+        div{
+            transform:rotate(-26.5deg);
+        }
+    }
+    &-v{
+        div{
+            transform:rotate(64deg);
+        }
+    }
+    &.map-markers-pink{
+        color:$pink;
+    }
+    &.map-markers-white{
+        color:$light-grey;
+
+        .map-markers-white--active{
+            color:$pink;
+        }
+    }
+    p{
+        margin:0;
+    }
+    a{
+        display:inline-block;
+        padding-top:3px;
+        color:$white;
+    }
+}
+.mapboxgl-popup{
+    top:auto !important;
+    bottom:0 !important;
+    z-index:10;
+    display:block !important;
+    width:100% !important;
+    transform:translateY(100%);
+    transition:all 0.5s;
+
+    &.mapboxgl-popup-show{
+        transform:translateY(0) !important;
+    }
+}
+.mapboxgl-popup-tip{
+    display:none;
+}
+.mapboxgl-ctrl-bottom-left,
+.mapboxgl-ctrl-bottom-right{
+    display:none;
+}
+.masterplan{
+    .mapboxgl-ctrl-group{
+        background:transparent;
+        border-radius:0;
+        box-shadow:none;
+
+        > button{
+            width:60px;
+            height:60px;
+        }
+    }
+    .mapboxgl-ctrl-icon{
+        &.mapboxgl-ctrl-fullscreen{
+            @include full-screen-icon($red2);
+            background-position:center center;
+            background-repeat:no-repeat;
+            background-size:32px 32px;
+            transition:all 500ms;
+
+            &.mapboxgl-ctrl-fullscreen-white{
+                @include full-screen-icon($white2);
+            }
+        }
+        &.mapboxgl-ctrl-shrink{
+            background:$dark-grey;
+
+            &:before{
+                display:block;
+                color:$white;
+                font-family:$FuturaStdBold;
+                font-size:14px;
+                content:'EXIT';
+            }
+        }
+        &.mapboxgl-ctrl-compass{
+            display:none;
+        }
+        &.mapboxgl-ctrl-zoom-in,
+        &.mapboxgl-ctrl-zoom-out{
+            background-position:center center;
+            background-repeat:no-repeat;
+            background-size:24px 24px;
+            transition:all 500ms;
+        }
+        &.mapboxgl-ctrl-zoom-in{
+            @include zoom-in-icon($red2);
+
+            &.mapboxgl-ctrl-zoom-in-white{
+                @include zoom-in-icon($white2);
+            }
+        }
+        &.mapboxgl-ctrl-zoom-out{
+            @include zoom-out-icon($red2);
+
+            &.mapboxgl-ctrl-zoom-out-white{
+                @include zoom-out-icon($white2);
+            }
+        }
+    }
+    .mapboxgl-ctrl-group{
+        > button{
+            border:none;
+
+            &.mapboxgl-ctrl-zoom-out,
+            &.mapboxgl-ctrl-zoom-in{
+                height:40px;
+            }
+        }
+    }
+    .mapboxgl-ctrl-top-right{
+        .mapboxgl-ctrl{
+            margin:0;
+        }
+    }
+    .mapboxgl-popup-close-button{
+        top:50%;
+        right:30px;
+        width:32px;
+        padding:0;
+        margin-top:-2px;
+        color:$dark-grey;
+        font-size:33px;
+        transform:translateY(-50%);
+
+        &:hover{
+            background:transparent;
+        }
+
+        @media all and (max-width:$large-breakpoint){
+            right:15px;
+        }
+        @media all and (max-width:$small-breakpoint){
+            top:15px;
+            transform:translateY(0);
+        }
+    }
+    .mapboxgl-popup-content{
+        padding:0;
+        color:$dark-grey;
+        font-family:$FuturaStdBook;
+        font-size:rem(14);
+        line-height: 1.71;
+        background:$light-grey;
+        border-radius:0;
+    }
+    .mapboxgl-popup-content{
+        img{
+            display:block;
+            width:100%;
+        }
+        .lot-popup{
+            overflow:hidden;
+        }
+        .lot-popup-info-id{
+            font-family:$FuturaStdBold;
+        }
+        b{
+            font-family:$FuturaStdBold;
+            font-weight:normal;
+        }
+        a{
+            display:inline-block;
+            font-family:$FuturaStdBold;
+            text-decoration:none;
+            text-transform:uppercase;
+            white-space: nowrap;
+
+            &:first-child{
+                margin-right:24px;
+            }
+
+            @media all and (max-width:$small-breakpoint){
+                display:block;
+
+                &:first-child{
+                    margin:0 0 23px;
+                }
+            }
+        }
+        .lot-popup-info{
+
+            @media all and (max-width:$small-breakpoint){
+            }
+        }
+        .lot-popup-images{
+            display:none;
+            overflow:hidden;
+
+            @media all and (max-width:$small-breakpoint){
+                display:block;
+            }
+        }
+        .lot-popup-images-close{
+            display:none;
+            height:24px;
+            clear:left;
+            cursor:pointer;
+            background:$white url('/images/arrow-select.svg') no-repeat center center;
+            background-size:24px 24px;
+
+            @media all and (max-width:$small-breakpoint){
+                display:block;
+            }
+        }
+        .lot-popup-info-tbl{
+            display:table;
+            width:100%;
+            height:120px;
+
+            @media all and (max-width:$popup-large-breakpoint){
+                height:100px;
+            }
+            @media all and (max-width:$medium-breakpoint){
+                height:80px;
+            }
+            @media all and (max-width:$small-breakpoint){
+                display:block;
+                height:auto;
+            }
+
+            .lot-popup-agent{
+                @media all and (max-width:$small-breakpoint){
+                    display:none;
+                }
+            }
+            .lot-popup-image{
+                @media all and (max-width:$small-breakpoint){
+                    display:none;
+                }
+            }
+        }
+        .lot-popup-cell{
+            display: table-cell;
+            vertical-align: middle;
+
+            @media all and (max-width:$small-breakpoint){
+                display:block;
+            }
+
+        }
+
+        .lot-popup-agent{
+            width:120px;
+
+            @media all and (max-width:$popup-large-breakpoint){
+                width:100px;
+            }
+            @media all and (max-width:$medium-breakpoint){
+                width:80px;
+            }
+            @media all and (max-width:$small-breakpoint){
+                float:left;
+                width:50%;
+            }
+        }
+        .lot-popup-image{
+            width:120px;
+
+            @media all and (max-width:$popup-large-breakpoint){
+                width:100px;
+            }
+            @media all and (max-width:$medium-breakpoint){
+                width:80px;
+            }
+            @media all and (max-width:$small-breakpoint){
+                float:left;
+                width:50%;
+            }
+        }
+        .lot-popup-info-id{
+            width:120px;
+            text-align:center;
+            text-transform:uppercase;
+
+            @media all and (max-width:$medium-breakpoint){
+                width:90px;
+            }
+            @media all and (max-width:$small-breakpoint){
+                width:100%;
+                padding:28px 20px 15px;
+                text-align:left;
+            }
+
+            div{
+                width:80%;
+            }
+        }
+        .lot-popup-info-inner{
+            padding-right:30px;
+
+            @media all and (max-width:$small-breakpoint){
+                width:100%;
+
+                .lot-popup-info-inner{
+                    padding:0 20px 20px;
+                }
+            }
+        }
+        .lot-popup-info-links{
+            width:80px;
+
+            @media all and (max-width:$small-breakpoint){
+                width:100%;
+            }
+        }
+        .lot-popup-info-links-plan{
+            @media all and (max-width:$small-breakpoint){
+                padding:0 20px;
+            }
+
+            &.hide{
+                display:none;
+            }
+        }
+        .lot-popup-info-links-enquire{
+            @media all and (max-width:$small-breakpoint){
+                padding:0 20px 34px;
+            }
+        }
+        .lot-popup-info-links-pdf{
+            display:none;
+            width:180px;
+            padding-left:20px;
+
+            @media all and (max-width:$small-breakpoint){
+                width:100%;
+
+                &.show{
+                    display:block;
+                }
+            }
+
+            &.show{
+                display:table-cell;
+            }
+        }
+        .lot-popup-info-empty{
+            width:95px;
+
+            @media all and (max-width:$large-breakpoint){
+                width:55px;
+            }
+            @media all and (max-width:$small-breakpoint){
+                display:none;
+            }
+        }
+    }
+    .lot-popup-hide-mobile{
+        @media all and (min-width:$small-breakpoint) and (max-width:$medium-breakpoint){
+            display:none;
+        }
+    }
+    .lot-popup-plan{
+        position:absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        z-index:1;
+        display:none;
+        padding:50px 0;
+        text-align:center;
+        background:$white;
+
+        .lot-popup-plan-inner{
+            position:absolute;
+            top:50px;
+            right:0;
+            bottom:120px;
+            left:0;
+            z-index:1;
+        }
+        img{
+            width:auto;
+            max-height:100%;
+        }
+        .lot-popup-plan-close{
+            position:absolute;
+            top:30px;
+            left:0;
+            z-index:10;
+            width:100%;
+            font-family:$FuturaStdBold;
+            font-size:14px;
+            text-align:center;
+            text-transform:uppercase;
+            cursor:pointer;
+        }
+    }
+}

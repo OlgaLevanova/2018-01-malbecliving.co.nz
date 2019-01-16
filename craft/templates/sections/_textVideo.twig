@@ -1,0 +1,24 @@
+<section class="common-block text-video {{ backgroundColor }}">
+
+    {% include 'partials/_header-lines' with {block:block} %}
+
+    {% for single in letter %}
+        {% include 'partials/_letter' with {single:single} %}
+    {% endfor %}
+
+    <div class="container reveal-block">
+
+        {% include 'partials/_text-button' %}
+
+        <div class="text-video--video">
+            <div class="video-wrapper video-16x9">
+                {{ block.video | raw }}
+            </div>
+        </div>
+    </div>
+
+    {% include 'partials/_animated-lines' with {
+        linesType:'left-top',
+        text:''
+    } %}
+</section>

@@ -1,0 +1,24 @@
+.header-lines {
+    width: 100%;
+    font-family: $CheltenhamBold;
+    font-size: rem(80);
+    line-height: 1;
+
+    @media all and (max-width:$medium-breakpoint){
+        font-size:rem(70);
+    }
+    @media all and (max-width:$xsmall-breakpoint){
+        font-size:rem(48);
+    }
+    @media all and (max-width: 320px){
+        font-size:rem(38);
+    }
+
+    section &{
+        position:absolute;
+        top:0;
+        left:50%;
+        text-align:center;
+        transform:translate(-50%, -50%);
+    }
+}

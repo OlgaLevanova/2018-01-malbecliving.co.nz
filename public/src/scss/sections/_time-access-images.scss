@@ -1,0 +1,44 @@
+.time-access-images{
+    .time-access-images--wrapper{
+        padding-bottom:110px;
+        overflow:hidden;
+
+        @media all and (max-width:$medium-breakpoint){
+            padding-bottom:90px;
+        }
+    }
+    .time-access-images--text{
+        float:left;
+        width:$video-text-width;
+
+        @media all and (max-width:$medium-breakpoint){
+            float:none;
+            width:100%;
+            padding-bottom:85px;
+        }
+    }
+    .time-access-images--time-access{
+        float:right;
+        width:35%;
+
+        @media all and (max-width:$medium-breakpoint){
+            float:none;
+            width:100%;
+        }
+    }
+    table{
+        float:right;
+
+        @media all and (max-width:$medium-breakpoint){
+            float:none;
+        }
+    }
+    .td-first{
+        width:100px;
+        font-family:$FuturaStdBold;
+
+        .#{$chLang} &{
+            @include NotoSansBold;
+        }
+    }
+}

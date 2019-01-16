@@ -1,0 +1,45 @@
+{% if not craft.request.isAjax %}
+
+<section class="common-block masterplan">
+    <div class="container reveal-block">
+        <h1>{{ entry.masterplanHeader }}</h1>
+        <div>{{ entry.masterplanParagraph }}</div>
+
+        {% include 'partials/_mastreplan-json' %}
+
+        <div class="masterplan-map" id="masterplan-map">
+            <h2>{{ "Explore the masterplan"|t }}</h2>
+
+            {% if entry.section.handle == 'masterplan' %}
+                <div class="masterplan-mapbox">
+                    <img src="{{ entry.masterplanMap.first.url }}" alt="">
+                </div>
+            {% else %}
+                <div class="masterplan-mapbox-wrapper">
+                    <div id="masterplan-mapbox" class="masterplan-mapbox">
+                        <div class="masterplan-explore">
+                            <div class="masterplan-explore-logo">
+                                {% include 'svg/malbec-logo-black.svg' %}
+                            </div>
+                            <div class="masterplan-explore-marker">
+                                {% include 'svg/map-marker.svg' %}
+                            </div>
+                            <button class="button button--red" id="button-explore">Start exploring</button>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+{% endif %}
+
+        {% include 'partials/_masterplan-lots' %}
+
+{% if not craft.request.isAjax %}
+    </div>
+
+    {% include 'partials/_animated-lines' with {
+        linesType:'left-top',
+        text:''
+    } %}
+</section>
+{% endif %}

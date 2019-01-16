@@ -1,0 +1,58 @@
+{% set header = craft.globals.getSetByHandle('header') %}
+
+<header class="header">
+    <div class="header-inner">
+        <div class="header-menu-button header--left">
+            <div class="header-menu-button--inner"></div>
+        </div>
+
+        <div class="header-title header--left hide-mobile">
+            {% if entry.section.handle != 'homepage' and entry.section.handle != 'error' %}
+            <span class="header-title--title">
+                {% if entry.section.handle == 'news' %}
+                    {{ "Community"|t }}
+                {% else %}
+                    {{ entry.title|t }}
+                {% endif %}
+
+            </span>
+            {% endif %}
+            <span class="header-title--close">
+                {{ "Close"|t }}
+            </span>
+        </div>
+
+        <div class="header-logo header--right">
+            {% if craft.request.firstSegment is null %}
+                {% include 'svg/malbec-logo-black.svg' %}
+            {% else %}
+                {% set locale = craft.i18n.getCurrentLocale() %}
+                <a href="/{{ locale.id == 'zh' ? 'cn' : '' }}">
+                    {% include 'svg/malbec-logo-black.svg' %}
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="header-language header--right hide-mobile">
+            <ul class="header-language--list">
+                <li class="header-language--chinese {% if locale.id == 'zh' %}header-language--act{% endif %}">
+                    <a href="/cn/">中文</a>
+                </li>
+                <li class="header-language--english {% if locale.id != 'zh' %}header-language--act{% endif %}">
+                    <a href="/">En</a>
+                </li>
+            </ul>
+        </div>
+
+        {% if entry.section.handle != 'homepage' and entry.section.handle != 'error' %}
+            <div class="header-title show-mobile">
+                {% if entry.section.handle == 'news' %}
+                    Community
+                {% else %}
+                    {{ entry.title }}
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</header>
+{% include 'partials/_menu' %}

@@ -1,0 +1,46 @@
+.error{
+    color:$white;
+    background:$dark-grey;
+
+    a{
+        color:$white;
+
+        &.error--back{
+            display:inline-block;
+            text-decoration:none;
+        }
+    }
+    h1{
+        svg{
+            margin-bottom:23px;
+            transform:rotate(180deg);
+        }
+    }
+    path.svg-color{
+        fill:$white !important;
+    }
+    .header,
+    .footer{
+        color:$white;
+        a{
+            color:$white;
+        }
+    }
+    .header{
+        g,path{
+            fill:$white !important;
+        }
+        .header-menu-button{
+            div,
+            &:before,
+            &:after{
+                background:$white;
+            }
+        }
+    }
+    .footer{
+        path{
+            fill:$white !important;
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{% set footer = craft.globals.getSetByHandle('footer') %}
+
+{# Get background color of the last section on Home, Live, and Build pages #}
+{% set backgroundColor = '' %}
+{% set entryHandle = entry.section.handle %}
+{% if entryHandle == 'homepage' or entryHandle == 'build' or entryHandle == 'live' %}
+    {% set numberOfBlocks = entry.sections | length %}
+    {% set backgroundColor = ' background-' ~ entry.sections[numberOfBlocks - 1].backgroundColor.first.title | lower | replace(' ','-') %}
+{% endif %}
+
+<footer class="footer{{ backgroundColor }}">
+    <div class="container">
+        <h2>{{ footer.footerHeader }}</h2>
+        <div class="footer-about">
+            <div class="footer-about--left">{{ footer.aboutText }}</div>
+            <div class="footer-about--right">
+                {% include 'svg/myland-logo.svg' %}
+            </div>
+        </div>
+        <div class="footer-enquire">
+            {{ footer.enquireText }}
+        </div>
+    </div>
+</footer>

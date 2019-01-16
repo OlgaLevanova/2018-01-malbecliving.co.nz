@@ -1,0 +1,17 @@
+<div class="text-button--wrapper">
+    <div class="text-button--text">
+        {% for content in block.bigTextBlock %}
+            <h1>{{ content.header }}</h1>
+            {{ content.text }}
+        {% endfor %}
+    </div>
+    <div class="text-button--button">
+        <a
+                href="{{ block.linkto.url }}"
+                {% if block.linkto.target %}target="{{ block.linkto.target }}"{% endif %}
+                class="button button--primary">
+            {{ block.linkto.text }}
+        </a>
+
+    </div>
+</div>

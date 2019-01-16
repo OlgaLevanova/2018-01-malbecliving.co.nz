@@ -1,0 +1,8 @@
+<section class="common-block enquire">
+    <div class="container">
+        {% include 'partials/_enquire-contact' %}
+
+        {% set form = entry.addForm %}
+        {% include 'partials/_enquire-form' with { form: form } %}
+    </div>
+</section>

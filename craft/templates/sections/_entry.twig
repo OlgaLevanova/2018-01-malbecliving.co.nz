@@ -1,0 +1,60 @@
+{% set entryType = entry.section %}
+
+{% for block in entry.sections %}
+    {% set backgroundColor = 'background-' ~ block.backgroundColor.first.title | lower | replace(' ','-') %}
+
+    {% set letter = [] %}
+    {% if loop.index0 < 4 %}
+        {% if loop.index0 == 1 or loop.index0 == 3 %}
+        {% set letter = letters[loop.index0] %}
+        {% else %}
+            {% set letter = [letters[loop.index0]] %}
+        {% endif %}
+    {% endif %}
+
+    {% switch block.type %}
+
+        {% case "textBlock1_2Image_Text" %}
+            {% include 'sections/_textBlock1_2Image_Text' with {
+                block:block,
+                backgroundColor:backgroundColor
+            } %}
+
+        {% case "textBlocks4_2Images_Text" %}
+            {% include 'sections/_textBlocks4_2Images_Text' with {
+                block:block,
+                backgroundColor:backgroundColor
+            } %}
+
+        {% case "textBlockTimeAccess2ImagesSmallTextBlock" %}
+            {% include 'sections/_timeAccess2ImagesText' with {
+                block:block,
+                backgroundColor:backgroundColor
+            } %}
+
+        {% case "textGallery" %}
+            {% include 'sections/_textGallery' with {
+                block:block,
+                backgroundColor:backgroundColor
+            } %}
+
+        {% case "textVideo" %}
+            {% include 'sections/_textVideo' with {
+                block:block,
+                backgroundColor:backgroundColor
+            } %}
+
+        {% case "news" %}
+            {% include 'sections/_last-news' with {
+                block:block,
+                backgroundColor:backgroundColor
+            } %}
+
+        {% default %}
+            {% include 'sections/_textBlock1_2Image_Text' with {
+                block:block,
+                backgroundColor:backgroundColor
+            } %}
+
+    {% endswitch %}
+{% endfor %}

@@ -1,0 +1,41 @@
+.pagination{
+    padding-top:25px;
+    margin-top:-15px;
+    overflow:hidden;
+
+    @media all and (max-width:$small-breakpoint){
+        padding-top:rem(80);
+        padding-bottom:rem(115);
+    }
+
+    .masterplan &{
+        margin-top:85px;
+
+        @media all and (max-width:$small-breakpoint){
+            margin-top:-10px;
+        }
+    }
+}
+.pagination--showing{
+    float:left;
+
+    @media all and (max-width:$small-breakpoint){
+        float:none;
+        padding-bottom:rem(80);
+    }
+}
+.pagination--load-more{
+    float:right;
+
+    @media all and (max-width:$small-breakpoint){
+        float:none;
+    }
+
+    a{
+        margin-top:-25px;
+
+        @media all and (max-width:$small-breakpoint){
+            margin-top:0;
+        }
+    }
+}

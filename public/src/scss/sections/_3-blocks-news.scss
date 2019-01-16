@@ -1,0 +1,137 @@
+
+.news-3blocks{
+    position:relative;
+    z-index:3;
+    padding-bottom:rem(150);
+    overflow:hidden;
+
+    @media all and (max-width:$medium-breakpoint){
+        padding-bottom:0;
+    }
+
+    .homepage &{
+        padding-bottom:0;
+    }
+    h2{
+        font-size:rem(16);
+    }
+    p{
+        display:inline;
+        margin:0;
+    }
+    img{
+        display:block;
+        width:100%;
+    }
+}
+.news-3blocks--date{
+    padding:rem(30) 0 rem(20);
+    font-family:$FuturaStdBold;
+    font-size:rem(12);
+
+    .#{$chLang} &{
+        @include NotoSansBold;
+    }
+
+    @media all and (max-width:$medium-breakpoint){
+        padding:rem(20) 0 rem(33);
+    }
+}
+.news-3blocks--excerpt{
+    @media all and (max-width:$medium-breakpoint){
+        padding-bottom:rem(60);
+    }
+}
+.news-3blocks-2,
+.news-3blocks-3{
+    h2{
+        padding-top:rem(45);
+
+        @media all and (max-width:$medium-breakpoint){
+            padding-top:rem(31);
+        }
+    }
+}
+.news-3blocks-1{
+    margin-bottom:-55px;
+    overflow:hidden;
+
+    @media all and (max-width:$medium-breakpoint){
+        margin-bottom:0;
+    }
+
+    >div{
+        float:left;
+
+        @media all and (max-width:$medium-breakpoint){
+            float:none;
+        }
+    }
+    h2{
+        padding-top:rem(3);
+
+        @media all and (max-width:$medium-breakpoint){
+            padding-top:rem(31);
+        }
+    }
+    .news-3blocks-image{
+        width:57%;
+
+        @media all and (max-width:$medium-breakpoint){
+            width:100%;
+        }
+    }
+    .news-3blocks-text{
+        width:43%;
+        padding-left:28px;
+
+        @media all and (max-width:$medium-breakpoint){
+            width:100%;
+            padding-left:0;
+        }
+    }
+}
+.news-3blocks-2{
+    float:left;
+    width:31.5%;
+
+    @media all and (max-width:$medium-breakpoint){
+        float:none;
+        width:100%;
+    }
+
+    .news-3blocks-image{
+        display:flex;
+        align-items:flex-end;
+
+        &.news-3blocks-image--single{
+            padding-top:100px;
+        }
+
+        @media all and (max-width:$medium-breakpoint){
+            display:block;
+
+            &.news-3blocks-image--single{
+                padding-top:0;
+            }
+        }
+    }
+    .news-3blocks-text{
+    }
+}
+.news-3blocks-3{
+    float:left;
+    width:68.5%;
+    padding-left:rem(127);
+
+    @media all and (max-width:$medium-breakpoint){
+        float:none;
+        width:100%;
+        padding-left:0;
+    }
+
+    .news-3blocks-image{
+    }
+    .news-3blocks-text{
+    }
+}

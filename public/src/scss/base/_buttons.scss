@@ -1,0 +1,65 @@
+.button {
+    display: inline-block;
+    width:100%;
+    padding: rem(22) rem(10);
+    margin-right:0;
+    font-family:$FuturaStdBold;
+    font-size: rem(14);
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    border:2px solid $dark-grey;
+    transition: all 0.2s;
+
+    .#{$chLang} &{
+        @include NotoSansBold;
+    }
+
+    @media all and (min-width: $small-breakpoint) {
+        width:auto;
+        padding: rem(25) rem(65);
+    }
+    &--primary {
+        color:$dark-grey;
+        background-color:transparent;
+
+        &:hover, &.active {
+            color:$white;
+            background-color:$dark-grey;
+        }
+    }
+    &--secondary {
+        color: $white;
+        background-color:$dark-grey;
+
+        &:hover, &.active {
+            color:$dark-grey;
+            background-color:$light-grey;
+        }
+    }
+    &--red {
+        color: $red;
+        background-color:transparent;
+        border-color:$red;
+
+        &:hover, &.active {
+            color:$white;
+            background-color:$red;
+        }
+    }
+    &--filter {
+        width:auto;
+        padding: rem(14) rem(17) rem(12);
+        color:$dark-grey;
+        background-color:$light-grey;
+        border:none;
+
+        &:hover {
+            background-color:rgba($dark-grey, 0.05);
+        }
+        &.active {
+            color:$white;
+            background-color:$dark-grey;
+        }
+    }
+}

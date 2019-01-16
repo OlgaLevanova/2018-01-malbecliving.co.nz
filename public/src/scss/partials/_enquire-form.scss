@@ -1,0 +1,157 @@
+.enquire-form{
+    padding-bottom:115px;
+    margin-right:34%;
+
+    @media all and (max-width:$medium-breakpoint){
+        margin-right:0;
+    }
+
+    @media all and (max-width:$small-breakpoint){
+        padding-bottom:85px;
+    }
+
+    ul{
+        padding:0;
+        margin:0;
+        list-style:none;
+    }
+    fieldset{
+        min-width:100%;
+        padding:0;
+        margin:0;
+        border:none;
+    }
+    label{
+        display:block;
+        padding:50px 0 10px;
+        font-family:$FuturaStdBold;
+        font-size:rem(12);
+
+        .#{$chLang} &{
+            @include NotoSansBold;
+        }
+    }
+    .radio_checkbox_group{
+        position:relative;
+        padding:35px 0 45px;
+
+        @media all and (max-width:$small-breakpoint){
+            padding:55px 0 55px;
+        }
+
+        label{
+            padding:0;
+            font-family:$FuturaStdBook;
+            font-size:rem(16);
+
+            .#{$chLang} &{
+                @include NotoSansReg;
+            }
+        }
+        ul{
+            position:relative;
+        }
+        .text-error{
+            margin-top:-5px;
+        }
+    }
+    .hidden_label{
+        position:relative;
+
+        &.hidden_label-recaptcha{
+            margin-bottom:55px;
+        }
+
+        input,
+        textarea{
+            width:100%;
+            padding:5px 0 10px;
+            font-family:$FuturaStdBook;
+            font-size:rem(16);
+            background:none;
+            border:$dark-grey solid;
+
+            .#{$chLang} &{
+                @include NotoSansReg;
+            }
+        }
+        textarea{
+            display:block;
+            height:400px;
+            padding:10px;
+            border-width:2px;
+        }
+
+        .text-error{
+            position:absolute;
+            top:100%;
+            left:0;
+            display:none;
+            width:100%;
+            padding-top:3px;
+            color:$red;
+            font-family:$FuturaStdBold;
+            font-size:12px;
+
+            .#{$chLang} &{
+                @include NotoSansBold;
+            }
+
+            a{
+                color:$red;
+            }
+        }
+
+        &.field-error{
+            input,
+            textarea{
+                border-color:$red;
+            }
+            .text-error{
+                display:block;
+            }
+            [type='checkbox']:not(:checked) + label:before,
+            [type='checkbox']:checked + label:before{
+                border-color:$red;
+            }
+        }
+    }
+    .hidden_label input{
+        border-width:0 0 2px 0;
+    }
+}
+.select-wrapper{
+    background:url('/images/arrow-select.svg') no-repeat;
+    background-position:right 15px center;
+    border:2px solid $dark-grey;
+
+    select{
+        width:calc(100% + 2px);
+        padding:30px 10px 30px 30px;
+        margin:00;
+        color:$dark-grey;
+        font-family:$FuturaStdBook;
+        font-size:rem(16);
+        background:none;
+        border:none;
+
+        .#{$chLang} &{
+            @include NotoSansReg;
+        }
+    }
+    option {
+        width:100%;
+        padding:0 10px;
+        margin:0;
+        color:$dark-grey;
+        background:$white;
+    }
+}
+.g-recaptcha-wrapper{
+
+    @media all and (max-width:400px){
+        margin-left:-37px;
+        transform:scale(0.8);
+    }
+
+}

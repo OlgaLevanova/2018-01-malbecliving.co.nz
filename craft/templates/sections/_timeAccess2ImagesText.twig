@@ -1,0 +1,34 @@
+<section class="common-block time-access-images {{ backgroundColor }}">
+
+    {% include 'partials/_header-lines' with {block:block} %}
+
+    {% for single in letter %}
+        {% include 'partials/_letter' with {single:single} %}
+    {% endfor %}
+
+    <div class="container reveal-block">
+        <div class="time-access-images--wrapper">
+            <div class="time-access-images--text">
+                {% for content in block.bigTextBlock %}
+                    <h1>{{ content.header }}</h1>
+                    {{ content.text }}
+                {% endfor %}
+            </div>
+            <div class="time-access-images--time-access">
+                <table>
+                    {% for content in block.timeAccess %}
+                        <tr><td class="td-first">{{ content.time }}</td><td>{{ content.destination }}</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        {% include 'partials/_images-portrait-landscape' with {block:block} %}
+
+    </div>
+
+    {% include 'partials/_animated-lines' with {
+        linesType:'top-right',
+        text:''
+    } %}
+</section>

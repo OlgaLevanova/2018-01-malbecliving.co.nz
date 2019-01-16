@@ -1,0 +1,62 @@
+@function rem($size, $context: $base-font-size) {
+    $remSize: $size / $context;
+    @return #{$remSize}rem;
+}
+
+@mixin placeholder ($color, $font) {
+    ::-webkit-input-placeholder { /* Chrome */
+        color: $color;
+        font-size: rem(12);
+
+        @media all and (min-width: $small-breakpoint-max) {
+            font-size: $font;
+        }
+    }
+
+    :-ms-input-placeholder { /* IE 10+ */
+        color: $color;
+        font-size: rem(12);
+
+        @media all and (min-width: $small-breakpoint-max) {
+            font-size: $font;
+        }
+    }
+
+    ::-moz-placeholder { /* Firefox 19+ */
+        color: $color;
+        font-size: rem(12);
+        opacity: 1;
+
+        @media all and (min-width: $small-breakpoint-max) {
+            font-size: $font;
+        }
+    }
+
+    :-moz-placeholder { /* Firefox 4 - 18 */
+        color: $color;
+        font-size: rem(12);
+        opacity: 1;
+
+        @media all and (min-width: $small-breakpoint-max) {
+            font-size: $font;
+        }
+    }
+}
+
+@mixin NotoSansBold {
+    font-family:$notoSansSC;
+    font-weight:bold;
+}
+@mixin NotoSansReg {
+    font-family:$notoSansSC;
+}
+
+@mixin full-screen-icon($color) {
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="%23#{$color}" fill-rule="nonzero" d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3h-6zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3v6zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6h6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6v-6z"/%3E%3C/svg%3E%0A');
+}
+@mixin zoom-in-icon($color) {
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"%3E%3Cg fill="none" fill-rule="evenodd" stroke="%23#{$color}" stroke-width="2" transform="translate%281 1%29"%3E%3Ccircle cx="12" cy="12" r="12"/%3E%3Cpath stroke-linecap="square" d="M12 6v12M18 12H6"/%3E%3C/g%3E%3C/svg%3E%0A');
+}
+@mixin zoom-out-icon($color) {
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"%3E%3Cg fill="none" fill-rule="evenodd" stroke="%23#{$color}" stroke-width="2" transform="translate%281 1%29"%3E%3Ccircle cx="12" cy="12" r="12"/%3E%3Cpath stroke-linecap="square" d="M18 12H6"/%3E%3C/g%3E%3C/svg%3E');
+}

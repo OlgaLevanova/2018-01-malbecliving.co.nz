@@ -1,0 +1,11 @@
+{% set notification = craft.globals.getSetByHandle('notifications') %}
+
+{% if notification.notificationShow %}
+<div class="notification">
+    {{ notification.notificationText }}
+
+    <div class="notification--close">
+        {% include 'svg/close.svg' %}
+    </div>
+</div>
+{% endif %}

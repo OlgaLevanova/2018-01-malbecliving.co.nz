@@ -1,0 +1,21 @@
+.homepage{
+    .header{
+        color:$white;
+
+        a{
+            color:$white;
+        }
+        .header-menu-button{
+            div,
+            &:before,
+            &:after{
+                background:$white;
+            }
+        }
+    }
+    .header-logo{
+        path{
+            fill:$white;
+        }
+    }
+}

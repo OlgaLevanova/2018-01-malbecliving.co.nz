@@ -1,0 +1,121 @@
+.news-article{
+    overflow:hidden;
+
+    img{
+        display:block;
+        width:100%;
+        margin-bottom:64px;
+    }
+}
+.news-article--content{
+    float:left;
+    width:83%;
+
+    @media all and (max-width:$medium-breakpoint){
+        float:none;
+        width:100%;
+    }
+
+    img{
+        max-width:100%;
+        margin:0;
+    }
+}
+.news-article--next{
+    float:left;
+    width:17%;
+    padding:2px 0 0 30px;
+    font-family:$FuturaStdBold;
+    font-size:rem(14);
+    text-transform:uppercase;
+
+    .#{$chLang} &{
+        @include NotoSansBold;
+    }
+
+    @media all and (max-width:$medium-breakpoint){
+        float:none;
+        width:100%;
+        padding:0 30px 0 0;
+        text-align:right;
+    }
+
+    a{
+        position:relative;
+        text-decoration:none;
+    }
+    svg{
+        position:absolute;
+        top:-6px;
+        right:-32px;
+    }
+}
+.news-article--date{
+    float:left;
+    width:20.5%;
+    padding-top:20px;
+    font-family:$FuturaStdBold;
+    font-size:rem(12);
+
+    .#{$chLang} &{
+        @include NotoSansBold;
+    }
+
+    @media all and (max-width:$medium-breakpoint){
+        float:none;
+        width:100%;
+        padding-bottom:30px;
+    }
+
+    &.show-on-mobile{
+        display:none;
+        padding-top:8px;
+        padding-bottom:65px;
+
+        @media all and (max-width:$medium-breakpoint){
+            display:block;
+        }
+        a{
+            @media all and (max-width:$medium-breakpoint){
+                display:block;
+            }
+        }
+    }
+
+    a{
+        position:relative;
+        display:block;
+        padding-left:30px;
+        margin-top:30px;
+        font-size:rem(14);
+        text-decoration:none;
+        text-transform:uppercase;
+
+        @media all and (max-width:$medium-breakpoint){
+            display:none;
+        }
+    }
+    svg{
+        position:absolute;
+        top:-4px;
+        left:0;
+    }
+}
+.news-article--text{
+    float:left;
+    width:79.5%;
+
+    @media all and (max-width:$medium-breakpoint){
+        float:none;
+        width:100%;
+    }
+
+    blockquote{
+        padding:0;
+        margin:55px -20.5% 55px 19%;
+
+        @media all and (max-width:$medium-breakpoint){
+            margin:75px 0;
+        }
+    }
+}

@@ -1,0 +1,54 @@
+.enquire-form {
+    /* Base for label styling */
+    [type='checkbox']:not(:checked),
+    [type='checkbox']:checked {
+        position: absolute;
+        left: -9999px;
+    }
+    [type='checkbox']:not(:checked) + label,
+    [type='checkbox']:checked + label {
+        position: relative;
+        padding-left: 40px;
+        cursor: pointer;
+    }
+
+    /* checkbox aspect */
+    [type='checkbox']:not(:checked) + label:before,
+    [type='checkbox']:checked + label:before {
+        position: absolute;
+        top: 2px;
+        left: 0;
+        width: 18px;
+        height: 18px;
+        border: 2px solid $dark-grey;
+        border-radius: 2px;
+        content: '';
+    }
+    /* checked mark aspect */
+    [type='checkbox']:not(:checked) + label:after,
+    [type='checkbox']:checked + label:after {
+        position: absolute;
+        top: 7px;
+        left: 4px;
+        color: $dark-grey;
+        font-size: 16px;
+        line-height: 0.8;
+        content: '✔';
+        transition: all 0.2s;
+
+        @media all and (max-width: $small-breakpoint) {
+            top: 9px;
+            font-size: 12px;
+        }
+
+    }
+    /* checked mark aspect changes */
+    [type='checkbox']:not(:checked) + label:after {
+        opacity: 0;
+        transform: scale(0);
+    }
+    [type='checkbox']:checked + label:after {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

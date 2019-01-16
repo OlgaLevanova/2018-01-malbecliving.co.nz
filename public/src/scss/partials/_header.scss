@@ -1,0 +1,202 @@
+.header {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:5;
+    width:100%;
+    overflow:hidden;
+    color:$dark-grey;
+
+    &.header--active{
+        top:0 !important;
+
+        .header-menu-button{
+            margin-top:rem(88);
+
+            @media all and (max-width:$small-breakpoint){
+                margin-top:rem(58);
+            }
+
+            div{
+                opacity:0;
+            }
+            &:before{
+                top:6px;
+                transform:rotate(45deg);
+            }
+            &:after{
+                top:6px;
+                transform:rotate(-45deg);
+            }
+        }
+        .header-language{
+            &.hide-mobile{
+                @media all and (max-width:$small-breakpoint) {
+                    display: block;
+                    float: none;
+                    padding-top: 90px;
+
+                    .header-language--list {
+                        width: rem(110);
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+        .header-language--list{
+            li.header-language--act{
+                background:rgba($dark-grey, 0.05);
+            }
+        }
+        .header-title{
+            &.show-mobile{
+                @media all and (max-width:$small-breakpoint) {
+                    display:none;
+                }
+            }
+
+            .header-title--title{
+                display:none;
+            }
+            .header-title--close{
+                display:inline;
+            }
+        }
+    }
+
+    .header-inner{
+        overflow:hidden;
+
+        @media all and (max-width:$header-breakpoint) {
+            max-width:calc(#{$container-width} + #{$container-gatter} * 2);
+            padding:0 $container-gatter;
+            margin:0 auto;
+        }
+    }
+
+    .header--left{
+        float:left;
+    }
+    .header--right{
+        float:right;
+    }
+    .hide-mobile{
+        @media all and (max-width:$small-breakpoint){
+            display:none;
+        }
+    }
+    .show-mobile{
+        display:none;
+
+        @media all and (max-width:$small-breakpoint){
+            display:block;
+        }
+    }
+    a{
+        color:$dark-grey;
+        text-decoration:none;
+    }
+    .header-logo{
+        svg{
+            width:rem(160);
+            height:rem(78);
+            margin:rem(57) rem(60) 0 rem(55);
+
+            @media all and (max-width:$small-breakpoint){
+                width:rem(100);
+                height:rem(48);
+                margin:rem(43) rem(22) 0 0;
+            }
+            @media all and (max-width:$header-breakpoint) {
+                margin-right:0;
+            }
+        }
+        path{
+            fill:$dark-grey;
+        }
+    }
+    .header-menu-button{
+        position:relative;
+        width:rem(25);
+        height:rem(25);
+        margin:rem(83) rem(58) 0 rem(60);
+        cursor:pointer;
+
+        @media all and (max-width:$small-breakpoint){
+            margin:rem(53) 0 0 rem(16);
+        }
+
+        @media all and (max-width:$header-breakpoint) {
+            margin-left:0;
+        }
+
+        div,
+        &:before,
+        &:after{
+            position:absolute;
+            left:0;
+            width:100%;
+            height:3px;
+            background:$dark-grey;
+            transition:all 0.15s;
+        }
+        div{
+            top:11px;
+        }
+        &:before{
+            top:3px;
+            content:'';
+        }
+        &:after{
+            bottom:3px;
+            content:'';
+        }
+    }
+    .header-title{
+        margin-top:rem(85);
+        font-family:$FuturaStdBold;
+        font-size:rem(24);
+        line-height:1;
+        letter-spacing:8px;
+        text-transform:uppercase;
+
+        .#{$chLang} &{
+            @include NotoSansBold;
+        }
+
+        @media all and (max-width:$small-breakpoint){
+            padding-top:rem(35);
+            margin:0;
+            clear:both;
+        }
+
+        .header-title--close{
+            display:none;
+        }
+    }
+    .header-language--list{
+        padding:rem(80) 0 0;
+        margin:0;
+        line-height:1;
+        list-style:none;
+
+        li{
+            display:inline-block;
+            padding:10px 12px 9px;
+            text-transform:uppercase;
+
+            &.header-language--english{
+                font-family:$FuturaStdBold;
+                font-size:rem(14);
+            }
+            &.header-language--chinese{
+                @include NotoSansBold;
+
+                font-size:rem(16);
+            }
+            &.header-language--act{
+                background:rgba($white, 0.2);
+            }
+        }
+    }
+}

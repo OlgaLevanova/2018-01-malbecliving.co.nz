@@ -1,0 +1,88 @@
+<div id="lots-filter" class="masterplan-filter">
+    <fieldset class="masterplan-filter--level">
+        <legend>Level</legend>
+        <div>
+            <input
+                    type="checkbox"
+                    name="checkbox-level-1"
+                    id="checkbox-level-1"
+                    class="lots-filter--level"
+                    data-checkbox="2"
+                    checked
+            >
+            <label for="checkbox-level-1">2<span> Level</span></label>
+            <input
+                    type="checkbox"
+                    name="checkbox-level-2"
+                    id="checkbox-level-2"
+                    class="lots-filter--level"
+                    data-checkbox="2.5"
+                    checked
+            >
+            <label for="checkbox-level-2">2.5<span> Level</span></label>
+            <input
+                    type="checkbox"
+                    name="checkbox-level-3"
+                    id="checkbox-level-3"
+                    class="lots-filter--level"
+                    data-checkbox="3"
+                    checked
+            >
+            <label for="checkbox-level-3">3<span> Level</span></label>
+        </div>
+    </fieldset>
+
+    {% set queryParams = {
+    section: 'lots',
+    order: 'lotArea'
+    } %}
+
+    {# Get min and max lot area for slider#}
+    {% set lotsRange =  craft.entries(queryParams) %}
+
+    <fieldset class="masterplan-filter--range">
+        <legend>Section</legend>
+        <div class="masterplan-filter--range-input">
+            <label for="slider-input-min" class="slider-input-min">
+                <span
+                        id="slider-input-min"
+                        data-rangemin="{{ lotsRange.first.lotArea }}"
+                ></span>
+            </label>
+            <span class="masterplan-filter--range-to">to</span>
+            <label for="slider-input-max" class="slider-input-max">
+                <span
+                        id="slider-input-max"
+                        data-rangemax="{{ lotsRange.last.lotArea }}"
+                ></span>
+            </label>
+        </div>
+        <div class="slider-handles--wrapper">
+            <div id="slider-handles"></div>
+        </div>
+    </fieldset>
+
+    <fieldset class="masterplan-filter--status">
+        <legend>Status</legend>
+        <div>
+            <input
+                    type="checkbox"
+                    name="checkbox-status-1"
+                    id="checkbox-status-1"
+                    class="lots-filter--status"
+                    data-checkbox="underOffer"
+                    checked
+            >
+            <label for="checkbox-status-1">{{ "Under offer"|t }}</label>
+            <input
+                    type="checkbox"
+                    name="checkbox-status-2"
+                    id="checkbox-status-2"
+                    class="lots-filter--status"
+                    data-checkbox="sold"
+                    checked
+            >
+            <label for="checkbox-status-2">{{ "Sold"|t }}</label>
+        </div>
+    </fieldset>
+</div>

@@ -1,0 +1,22 @@
+{% set layout = "_layout" %}
+{% if craft.request.isAjax %} {% set layout = "_layout-ajax" %} {% endif %}
+{% extends layout %}
+
+{% block content %}
+
+    {% switch entry.section.handle %}
+        {% case 'genericContent' %}
+            {% include 'pages/_generic-page' %}
+        {% case 'enquire' %}
+            {% include 'pages/_enquire' %}
+        {% case 'masterplan' %}
+            {% include 'pages/_masterplan' %}
+        {% case 'masterplanMapbox' %}
+            {% include 'pages/_masterplan' %}
+        {% case 'masterplanDraw' %}
+            {% include 'pages/_masterplan-draw' %}
+        {% default %}
+            {% include 'sections/_entry' %}
+    {% endswitch %}
+
+{% endblock %}

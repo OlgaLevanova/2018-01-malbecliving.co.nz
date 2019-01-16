@@ -1,0 +1,35 @@
+<section class="common-block news-article">
+    <div class="container reveal-block">
+        <h1>{{ entry.title }}</h1>
+        <div class="news-article--content">
+            <img src="{{ entry.newsImage.first.url }}" alt="">
+            <div class="news-article--date">
+                {{ entry.postDate | date("d M Y") }}
+                <a href="{{ craft.entries.section('newsListing').first.url }}">
+                    Back to all
+                    {% include 'svg/arrow-back.svg' %}
+                </a>
+            </div>
+            <div class="news-article--text">
+                {{ entry.body }}
+            </div>
+        </div>
+        <div class="news-article--date show-on-mobile">
+            <a href="{{ craft.entries.section('newsListing').first.url }}">
+                Back to all
+                {% include 'svg/arrow-back.svg' %}
+            </a>
+        </div>
+        <div class="news-article--next">
+
+            {% set criteria = {section: 'news', order: 'postDate desc'} %}
+            {% set next = entry.getNext(criteria) %}
+            {% if next %}
+                <a href="{{ next.url }}">
+                    Next article
+                    {% include 'svg/arrow.svg' %}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</section>

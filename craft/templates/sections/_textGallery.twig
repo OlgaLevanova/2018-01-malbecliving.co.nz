@@ -1,0 +1,55 @@
+<section class="common-block text-gallery {{ backgroundColor }}">
+
+    {% include 'partials/_header-lines' with {block:block} %}
+
+    {% for single in letter %}
+        {% include 'partials/_letter' with {single:single} %}
+    {% endfor %}
+
+    <div class="container reveal-block">
+
+        {% include 'partials/_text-button' %}
+
+        <div class="text-gallery--gallery">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {% set totalSlides = block.slides|length %}
+                    {% for slide in block.slides %}
+                        <div class="swiper-slide">
+                            <img src="{{ slide.image.first.url }}" alt="">
+                            <div class="swiper-text">
+                                <div class="swiper-title total-slides-{{ totalSlides }}">{{ slide.header }}</div>
+                                <div class="swiper-link">
+                                    {% if slide.linkto %}
+                                        <a
+                                                href="{{ slide.linkto.url }}"
+                                                {% if slide.linkto.target %}target="{{ slide.linkto.target }}"{% endif %}
+                                        >
+                                            {{ slide.linkto.text }}
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                {% if totalSlides > 1 %}
+                <div class="swiper-buttons">
+                    <div class="swiper-button-prev">
+                        {% include 'svg/arrow.svg' %}
+                    </div>
+                    <div class="swiper-button-next">
+                        {% include 'svg/arrow.svg' %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% include 'partials/_animated-lines' with {
+        linesType:'left-top',
+        text:''
+    } %}
+</section>

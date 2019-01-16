@@ -1,0 +1,34 @@
+<div class="enquire-contact reveal-block">
+    <h1>{{ entry.enquireHeader }}</h1>
+
+    <ul class="enquire-contact--list">
+        {% for contact in entry.enquireContacts %}
+        <li>
+            <div class="enquire-contact--image">
+                {% if contact.contactPhoto.first %}
+                <img src="{{ contact.contactPhoto.first.url }}" alt="">
+                {% endif %}
+            </div>
+            <div class="enquire-contact--data">
+                <div>{{ contact.contactFullName }}</div>
+                <a href="mailto:{{ contact.contactEmail }}">
+                    {{ contact.contactEmail }}
+                </a><br>
+                <a href="tel:{{ contact.contactPhone }}">
+                    {{ contact.contactPhone }}
+                </a>
+                {% if contact.wechatId %}
+                <br>
+                <a>
+                    wechat: {{ contact.wechatId }}
+                </a>
+                {% endif %}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div class="enquire-contact--paragraph">
+        {{ entry.enquireParagraph }}
+    </div>
+</div>

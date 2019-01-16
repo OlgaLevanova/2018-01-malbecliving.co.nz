@@ -1,0 +1,209 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    line-height:$base-line-height;
+}
+
+body {
+    position: relative;
+    color:$base-color;
+    font-family:$base-font-family;
+    font-size: rem(16);
+    background:$light-grey;
+
+    .#{$chLang} &{
+        @include NotoSansReg;
+    }
+}
+
+*:focus {
+    outline: none;
+}
+a{
+    color:$base-color;
+}
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    font-family:$FuturaStdBold;
+    font-weight:normal;
+    line-height: 1.33;
+
+    .#{$chLang} &{
+        @include NotoSansBold;
+    }
+}
+h1{
+    font-size:rem(24);
+}
+h2{
+    font-size:rem(20);
+
+    @media all and (max-width:$medium-breakpoint){
+        font-size:rem(16);
+    }
+}
+h3, h4, h5 {
+    font-size:rem(18);
+}
+blockquote{
+    font-family:$FuturaStdBookOblique;
+    font-size:rem(36);
+    line-height:1.15;
+
+    .#{$chLang} &{
+        @include NotoSansReg;
+    }
+}
+
+main{
+    overflow:hidden;
+}
+
+section{
+    position:relative;
+
+    .build &,
+    .live &,
+    .homepage &{
+        &.common-block{
+            padding-top:rem(590);
+            padding-bottom:rem(415);
+
+            @media all and (max-width:$medium-breakpoint){
+                padding-top:rem(310);
+                padding-bottom:rem(320);
+            }
+
+            &.text1-images.background-light-blue,
+            &.text1-images.background-dark-blue {
+                padding-top: rem(308);
+            }
+
+        }
+    }
+    /* This should applies to all pages */
+    &.common-block{
+        &:first-child{
+            padding-top:rem(250);
+
+            @media all and (max-width:$medium-breakpoint){
+                padding-top:rem(250);
+            }
+        }
+        &:last-child{
+            padding-bottom:rem(260);
+
+            @media all and (max-width:$medium-breakpoint){
+                padding-bottom:rem(90);
+            }
+
+            .news &{
+                @media all and (max-width:$medium-breakpoint){
+                    padding-bottom:rem(200);
+                }
+            }
+            .error & {
+                @media all and (max-width:$medium-breakpoint){
+                    padding-bottom:rem(280);
+                }
+            }
+        }
+
+        h1{
+            margin:0 0 48px;
+
+            @media all and (max-width:$medium-breakpoint){
+                margin-bottom:40px;
+            }
+
+            .newsListing &{
+                margin-bottom:100px;
+            }
+            .news &{
+                margin-bottom:75px;
+            }
+            .error &{
+                margin-bottom:28px;
+            }
+        }
+        .homepage &{
+            &:nth-child(2){
+                padding-top:rem(315);
+            }
+        }
+
+        &.masterplan {
+
+            h1 + div {
+                @media all and (min-width: $medium-breakpoint) {
+                    width: 75%;
+                }
+            }
+
+            .masterplan-map {
+                @media all and (max-width: $medium-breakpoint) {
+                    padding-top: rem(130);
+                }
+            }
+        }
+    }
+}
+.container{
+    max-width:calc(#{$container-width} + #{$container-gatter} * 2);
+    padding:0 $container-gatter;
+    margin:0 auto;
+}
+
+.background-{
+    &dark-blue{
+        background:$blue-grey;
+    }
+    &light-blue{
+        background:$light-grey;
+    }
+    &red{
+        color:$light-grey;
+        background:$red;
+
+        .button--primary {
+            color:$white;
+            background-color:transparent;
+            border-color:$white;
+
+            &:hover, &.active {
+                color:$red;
+                background-color:$white;
+            }
+        }
+        .header-lines{
+            color:$dark-grey;
+        }
+    }
+}
+.video-wrapper {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+
+    /* 16x9 Aspect Ratio */
+    &.video-16x9 {
+        padding-bottom: 56.25%;
+    }
+    /* 4x3 Aspect Ratio */
+    &.video-4x3 {
+        padding-bottom: 75%;
+    }
+    iframe {
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+.reveal-block{
+    //opacity:0;
+    visibility: hidden;
+}

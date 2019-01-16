@@ -1,0 +1,29 @@
+{% set locale = craft.i18n.getCurrentLocale() %}
+
+<div id="loading" class="loading">
+    <div class="cssload-container">
+        <ul class="cssload-flex-container">
+            <li>
+                <span class="cssload-loading"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="pagination">
+    <div class="pagination--showing">
+        {{ "Showing"|t }}
+        <b>
+            {% if pageInfo.total > 9 %}<span class="suffix-item">0</span>{% endif %}1
+        </b>
+        <span class="single-item">&mdash;</span>
+        <b class="single-item">
+            {% if pageInfo.total < 10 %}<span class="suffix-item">0</span>{% endif %}<span id="item-last">{{ pageInfo.last }}</span>
+        </b>
+        {{ "of"|t }} <b id="items-total">{{ pageInfo.total }}</b>
+    </div>
+
+    <div class="pagination--load-more">
+        <a href="#" id="loadMore" data-locale="{{ locale.id }}" class="button button--primary">{{ "More"|t }}</a>
+    </div>
+</div>

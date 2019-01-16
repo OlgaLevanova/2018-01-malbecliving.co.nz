@@ -1,0 +1,99 @@
+.enquire-contact{
+    margin-right:25%;
+
+    @media all and (max-width:$medium-breakpoint){
+        margin-right:0;
+    }
+}
+.enquire-contact--list{
+    padding:40px 0 50px;
+    //margin:0 17.5% 0 0;
+    margin:0;
+    overflow:hidden;
+    list-style:none;
+
+    @media all and (max-width:$small-breakpoint){
+        padding:65px 0 65px;
+        margin:0 -20px 0 0;
+    }
+
+    @media all and (max-width: 375px){
+        float: none;
+        margin: 0 auto;
+    }
+
+    li{
+        float:left;
+        width:50%;
+        //padding-right: rem(25);
+        padding-bottom:20px;
+        overflow:hidden;
+
+        @media all and (max-width:$small-breakpoint){
+            float:none;
+            width:100%;
+        }
+    }
+}
+.enquire-contact--image,
+.enquire-contact--data{
+    float:left;
+}
+.enquire-contact--image{
+    width: rem(120);
+    overflow:hidden;
+    border-radius:50%;
+
+    @media all and (max-width:$small-breakpoint){
+        width:rem(80);
+    }
+
+    @media all and (max-width: 375px){
+        float: none;
+        margin: 0 auto;
+    }
+
+    img{
+        display:block;
+        width:100%;
+        height:rem(120);
+
+        @media all and (max-width:$small-breakpoint){
+            height:rem(80);
+        }
+    }
+}
+.enquire-contact--data{
+    width:60%;
+    padding:24px 0 0 24px;
+    font-size:rem(16);
+    line-height:1.5;
+
+    @media all and (max-width:$small-breakpoint){
+        padding:4px 0 0 20px;
+    }
+
+    @media all and (max-width: 375px){
+        float: none;
+        width: 100%;
+        padding: 0;
+        margin: rem(10) auto rem(20);
+        text-align: center;
+    }
+
+    div{
+        font-family:$FuturaStdBold;
+
+        .#{$chLang} &{
+            @include NotoSansBold;
+        }
+    }
+    a{
+        text-decoration:none;
+        white-space:nowrap;
+
+        @media all and (max-width:$xsmall-breakpoint){
+            font-size:rem(14);
+        }
+    }
+}

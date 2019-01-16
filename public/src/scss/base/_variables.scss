@@ -1,0 +1,44 @@
+$chLang: 'chinese';
+
+/* Fonts */
+$font-path: '/fonts/';
+$font-default: Helvetica, Arial, sans-serif;
+
+$CheltenhamBold: CheltenhamBold, $font-default;
+$FuturaStdBookOblique: FuturaStdBookOblique, $font-default;
+$FuturaStdBook: FuturaStdBook, $font-default;
+$FuturaStdBold: FuturaStdBold, $font-default;
+
+$notoSansSC: 'Noto Sans SC', sans-serif;
+
+/* Colours */
+$white: #FFFFFF;
+$white2: FFFFFF;
+$dark-grey: #231F20;
+$light-grey: #EEEFF1;
+$blue-grey: #BDD1D4;
+$red: #E23437;
+$red2: E23437;
+$pink: #E1676A;
+
+/* Breakpoints */
+$xsmall-breakpoint: 480px;
+$small-breakpoint-min: 767px;
+$small-breakpoint: 768px;
+$small-breakpoint-max: 769px;
+$medium-breakpoint: 991px;
+$large-breakpoint: 1200px;
+$x-large-breakpoint: 1440px;
+$header-breakpoint:1270px;
+$filter-breakpoint:1060px;
+$popup-large-breakpoint:1100px;
+
+$base-font-family:$FuturaStdBook;
+$base-font-size: 16;
+$base-line-height: 1.75;
+$base-color: $dark-grey;
+
+$container-width:1140px;
+$container-gatter:20px;
+$text1-images-width:74.5%; // for blocks with 2 images
+$video-text-width:60%; // For blocks with left text and right button or time access

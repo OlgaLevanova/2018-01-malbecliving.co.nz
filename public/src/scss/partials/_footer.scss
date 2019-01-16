@@ -1,0 +1,50 @@
+.footer {
+    h2{
+        margin:0 0 rem(43);
+        font-size:rem(14);
+    }
+    p{
+        margin:0;
+    }
+    a{
+        color:$dark-grey;
+    }
+}
+.footer-enquire{
+    padding:rem(100) 0 rem(125);
+    font-size:rem(20);
+
+    @media all and (max-width:$small-breakpoint){
+        padding:rem(55) 0 rem(100);
+    }
+
+    a{
+        font-family:$FuturaStdBold;
+
+        .#{$chLang} &{
+            @include NotoSansBold;
+        }
+    }
+}
+.footer-about{
+    overflow:hidden;
+}
+.footer-about--left{
+    float:left;
+    width:65%;
+
+    @media all and (max-width:$small-breakpoint){
+        width:100%;
+        padding-bottom:rem(66);
+    }
+}
+.footer-about--right{
+    float:right;
+    width:30%;
+    text-align:right;
+
+    @media all and (max-width:$small-breakpoint){
+        width:100%;
+        text-align:left;
+    }
+}

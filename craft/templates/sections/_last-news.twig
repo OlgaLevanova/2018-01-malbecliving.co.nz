@@ -1,0 +1,23 @@
+<section class="common-block last-news {{ backgroundColor }}">
+
+    {% include 'partials/_header-lines' with {block:block} %}
+
+    {% for single in letter %}
+        {% include 'partials/_letter' with {single:single} %}
+    {% endfor %}
+
+    <div class="container reveal-block">
+
+        {% include 'partials/_text-button' %}
+
+        {% set latestNews = craft.entries.section('news').limit(3).order('postDate desc') %}
+
+        {% include 'partials/_3-blocks-news' with {news:latestNews, page:1} %}
+
+    </div>
+
+    {% include 'partials/_animated-lines' with {
+        linesType:'top-right',
+        text:''
+    } %}
+</section>

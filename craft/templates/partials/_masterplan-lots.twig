@@ -1,0 +1,104 @@
+{% if not craft.request.isAjax %}
+<div class="masterplan-lots">
+    <div class="masterplan-lots--header">
+        <h2>{{ "Available lots"|t }}</h2>
+        <span id="lots-filter-button" class="lots-filter button button--filter">{{ "Filter"|t }}</span>
+    </div>
+
+    {% include 'partials/_masterplan-filter.twig' %}
+
+{% endif %}
+    {#{% set categoriesToShow = craft.categories.group('lotsGroups').search('groupStatus:allSold OR groupStatus:forSale') %}#}
+    {% set categoriesToShow = craft.categories.group('lotsGroups').search('groupStatus:forSale') %}
+
+    {# Get data from request and set data to filter results. #}
+    {% set levelsParam = 'or, = 2, = 2.5, = 3' %}
+    {% set levelRequest = craft.request.getParam('level') %}
+    {% if levelRequest is not null %}
+        {% set levelsParam = 'or' %}
+        {% set levelArray = levelRequest|split(',') %}
+        {% for i in 0..levelArray|length - 1 %}
+            {% set levelsParam = levelsParam ~ ', = ' ~ levelArray[i] %}
+        {% endfor %}
+    {% endif %}
+
+    {% set statusParam = 'or, = Sold, = forSale, = underOffer' %}
+    {% set statusRequest = craft.request.getParam('status') %}
+    {% if statusRequest is not null %}
+        {% set statusParam = 'or, = forSale' %}
+        {% set statusArray = statusRequest|split(',') %}
+        {% for i in 0..statusArray|length - 1 %}
+            {% set statusParam = statusParam ~ ', = ' ~ statusArray[i] %}
+        {% endfor %}
+    {% endif %}
+
+    {% set areaParam = 'and, >= 0, <= 4563' %}
+    {% set areaRequest = craft.request.getParam('area') %}
+    {% if areaRequest is not null %}
+        {% set areaArray = areaRequest|split(',') %}
+        {% set areaParam = 'and, >= ' ~ areaArray[0] ~ ', <= ' ~ areaArray[1] %}
+    {% endif %}
+
+    {% set queryParams = {
+        section: 'lots',
+        order: 'lotId',
+        limit: 20,
+        levels: levelsParam,
+        lotStatus: statusParam,
+        lotArea: areaParam
+    } %}
+
+    {#{% paginate craft.entries(queryParams).relatedTo(['or',
+    categoriesToShow[0],
+    categoriesToShow[1]
+    ]) as pageInfo, lots %}#}
+
+    {% paginate craft.entries(queryParams).relatedTo(categoriesToShow) as pageInfo, lots %}
+
+{% if not craft.request.isAjax %}
+    <table id="lots-table" data-items-total="{{ pageInfo.total }}">
+        <tbody>
+{% endif %}
+
+        {% for lot in lots %}
+        <tr{% if lot.lotStatus.value == 'sold' %}
+            class="lot--sold"{% endif %}
+            data-items-total="{{ pageInfo.total }}"
+        >
+            <td>
+                <b>{{ lot.lotId }}</b>
+            </td>
+            <td>
+                {{ '<span class="lot--mobile-block"><b>{lotarea}m2</b> section</span> <span class="lot--mobile-hide">with resource consent for a <b>{lotlevels}</b> level, <b>{lotbedrooms}</b> bedroom,</span> <span class="lot--mobile-block"><b>{lothousearea}m2</b> standalone house.'|t({ lotarea: lot.lotArea, lotlevels: lot.levels, lotbedrooms: lot.bedrooms, lothousearea: lot.houseArea })|raw }}
+                </span>
+            </td>
+            <td class="lot--tablet-hide">
+                {#{% if lot.lotStatus.value != 'sold' %}
+                    {{ lot.lotStatus.label|t }}
+                {% endif %}#}
+                {{ lot.lotStatus.label|t }}
+            </td>
+            <td class="lot--mobile-hide">
+                {% if lot.lotStatus.value == 'sold' %}
+                    <b>{{ "Sold"|t }}</b>
+                {% else %}
+                    <b data-lot="{{ lot.title }}" data-lot-marker="{{ lot.lotMarkerText }}">{{ "View"|t }}</b>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+
+        {% if lots|length == 0 %}
+        <tr data-items-total="0">
+            <td class="no-found">No lots are found. Try to change filter params</td>
+        </tr>
+        {% endif %}
+
+{% if not craft.request.isAjax %}
+        </tbody>
+    </table>
+
+    {% include 'partials/_pagination' with {pageInfo:pageInfo} %}
+
+</div>
+{% endif %}

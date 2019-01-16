@@ -1,0 +1,67 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+{% set letters = ['M', ['A', 'L'], 'B', ['E', 'C']] %}
+{% set locale = craft.i18n.getCurrentLocale() %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+
+	<link href='https://api.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css' rel='stylesheet' />
+
+	<title>{% if entry.title is defined and entry.title != 'Homepage' %}{{ entry.title }} - {% endif %}{{ siteName }}</title>
+
+	<style>
+		body {
+			margin:0;
+			padding:0;
+		}
+		.masterplan-mapbox-wrapper{
+			position:relative;
+			top:100px;
+			width:80%;
+			height:600px;
+			margin:0 auto;
+		}
+		.masterplan-mapbox-wrapper.masterplan-mapbox-wrapper--static{
+			position:static;
+			top:0;
+			width:100%;
+			height:auto;
+			margin:0;
+		}
+		#map {
+			position:absolute;
+			top:0;
+			bottom:0;
+			width:100%;
+		}
+	</style>
+</head>
+
+<body class="{{ entry.section.handle }}">
+
+	<div class="masterplan-mapbox-wrapper" id="wrapper">
+		<div id="map" class="masterplan-mapbox"></div>
+	</div>
+
+	{% block content %}{% endblock %}
+
+	<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.js"></script>
+	<script src="/build/app.js"></script>
+
+	<script>
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{#
+ # News entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a News entry’s URL is
+ # requested. That’s because the News section’s Template setting is
+ # set to “news/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested News entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% set layout = "_layout" %}
+{% if craft.request.isAjax %} {% set layout = "_layout-ajax" %} {% endif %}
+{% extends layout %}
+
+{% block content %}
+	{% switch entry.section.handle %}
+
+	{% case "news" %}
+		{% include 'news/_news-article' %}
+
+	{% case "newsListing" %}
+
+		{% include 'news/_news-listing' %}
+
+	{% endswitch %}
+{% endblock %}

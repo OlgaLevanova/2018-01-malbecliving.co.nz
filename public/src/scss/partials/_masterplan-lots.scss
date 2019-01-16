@@ -1,0 +1,114 @@
+.masterplan-lots{
+    table{
+        width:100%;
+        font-size:rem(14);
+        line-height:1.9;
+        border-collapse: separate;
+        border-spacing:0 15px;
+    }
+    .lot--sold{
+        td{
+            position:relative;
+            margin:0;
+            overflow:hidden;
+            border:none;
+
+            &:before,
+            &:after{
+                position:absolute;
+                left:0;
+                width:100%;
+                height:0;
+                border:1px solid #000000;
+                content:'';
+            }
+            &:before{
+                top:25px;;
+            }
+            &:after{
+                top:52px;
+            }
+        }
+    }
+    td{
+        padding:0;
+        margin-bottom:15px;
+        vertical-align:top;
+
+        &:first-child,
+        &:nth-child(2),
+        &:nth-child(3){
+            padding-top:14px;
+        }
+        &:first-child{
+            width:rem(100);
+
+            @media all and (max-width:$small-breakpoint){
+                width:rem(50);
+            }
+
+            &.no-found{
+                width:100%;
+            }
+        }
+        &:nth-child(3){
+            /*width:rem(130);*/
+            width:rem(100);
+            text-align:center;
+        }
+        &:nth-child(4){
+            width:rem(70);
+            text-align:center;
+            text-transform:uppercase;
+
+            b{
+                display:inline-block;
+                width:100%;
+                padding:14px 15px 10px;
+                cursor:pointer;
+
+                &:hover{
+                    background:rgba($dark-grey, 0.05);
+                }
+            }
+        }
+    }
+    b{
+        font-family:$FuturaStdBold;
+
+        .#{$chLang} &{
+            @include NotoSansBold;
+        }
+    }
+    .lot--sold{
+
+    }
+    @media all and (max-width:$small-breakpoint){
+        .lot--mobile-block{
+            white-space:nowrap;
+        }
+
+        .lot--mobile-hide{
+            display:none;
+        }
+    }
+    @media all and (max-width:$medium-breakpoint){
+        .lot--tablet-hide{
+            display:none;
+        }
+    }
+}
+.masterplan-lots--header{
+    padding:80px 0 60px;
+    overflow:hidden;
+
+    h2{
+        float:left;
+        padding-top:7px;
+        margin:0;
+    }
+    span{
+        float:right;
+        cursor:pointer;
+    }
+}

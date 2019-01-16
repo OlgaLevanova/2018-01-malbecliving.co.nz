@@ -1,0 +1,15 @@
+.masterplan{
+    position:relative;
+
+    h2{
+        margin:0 0 42px;
+        font-size:rem(24);
+    }
+}
+.masterplan-map{
+    padding-top:rem(280);
+
+    @media all and (max-width:$small-breakpoint){
+        padding-top:rem(130);
+    }
+}

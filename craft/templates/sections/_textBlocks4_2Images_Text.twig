@@ -1,0 +1,59 @@
+<section class="common-block text5-images {{ backgroundColor }}">
+
+    {% include 'partials/_header-lines' with {block:block} %}
+
+    {% for single in letter %}
+        {% include 'partials/_letter' with {single:single} %}
+    {% endfor %}
+
+    <div class="container reveal-block">
+        <div class="text5-images--text1">
+
+            {% if block.linkto %}
+                <div class="text5-images--link">
+                    <a
+                            href="{{ block.linkto.url }}"
+                            {% if block.linkto.target %}target="{{ block.linkto.target }}"{% endif %}
+                            class="button button--primary">
+                        {{ block.linkto.text }}
+                    </a>
+                </div>
+            {% endif %}
+
+            {% for content in block.bigTextBlock %}
+                <div class="text5-images--block{{ loop.index }}">
+                    {% if loop.index == 1 %}
+                        <h1>{{ content.header }}</h1>
+                    {% else %}
+                        <h2>{{ content.header }}</h2>
+                    {% endif %}
+                    {{ content.text }}
+                </div>
+                {% if loop.index == 3 %}
+                    <div class="clear"></div>
+                {% endif %}
+            {% endfor %}
+
+            <div class="clear-100"></div>
+        </div>
+
+        {% if block.linkto %}
+            <div class="text5-images--link text5-images--link show-on-mobile">
+                <a
+                        href="{{ block.linkto.url }}"
+                        {% if block.linkto.target %}target="{{ block.linkto.target }}"{% endif %}
+                        class="button button--primary">
+                    {{ block.linkto.text }}
+                </a>
+            </div>
+        {% endif %}
+
+        {% include 'partials/_images-portrait-landscape' with {block:block} %}
+
+    </div>
+
+    {% include 'partials/_animated-lines' with {
+        linesType:'top-right',
+        text:''
+    } %}
+</section>

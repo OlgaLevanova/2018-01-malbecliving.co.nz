@@ -1,0 +1,40 @@
+.masterplan-filter {
+    [type='checkbox'] {
+        position: absolute;
+        left: -9999px;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+
+        & + label {
+            position: relative;
+            padding:18px 16px 16px;
+            cursor: pointer;
+            transition:all 0.2s;
+
+            &:hover{
+                background:rgba($dark-grey, 0.05);
+            }
+
+            &:after{
+                position: absolute;
+                top:24px;
+                right:10px;
+                left:10px;
+                height:2px;
+                background:$dark-grey;
+                content: '';
+                transition:all 0.2s;
+            }
+        }
+
+        &:checked + label:after {
+            opacity: 0;
+            transform: scale(0);
+        }
+        &:not(:checked) + label:after {
+            opacity:1;
+            transform: scale(1);
+        }
+    }
+}

@@ -1,0 +1,18 @@
+<div class="news-3blocks">
+    {% for block in news %}
+    <div class="news-3blocks-{{ loop.index }}">
+        <div class="news-3blocks-image"{% if loop.index != 1 %} data-equal="image-{{ page }}{% endif %}">
+            <img src="{{ block.newsImage.first.url }}" alt="">
+        </div>
+        <div class="news-3blocks-text">
+            <h2>{{ block.title }}</h2>
+            <div class="news-3blocks--date">{{ block.postDate | date("d F Y") }}</div>
+            <div class="news-3blocks--excerpt">
+                {% set cutText = block.newsExcerptText|striptags %}
+                {{ cutText|slice(0,150) }}{% if cutText|length > 150 %}...{% endif %}
+                <a href="{{ block.url }}">Read more</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,37 @@
+<section class="common-block text1-images {{ backgroundColor }}">
+
+    {% include 'partials/_header-lines' with {block:block} %}
+
+    {% for single in letter %}
+        {% include 'partials/_letter' with {single:single} %}
+    {% endfor %}
+
+    <div class="container reveal-block">
+        <div class="text1-images--text1">
+            {% for content in block.bigTextBlock %}
+                <h1>{{ content.header }}</h1>
+                {{ content.text }}
+            {% endfor %}
+        </div>
+        {% if block.linkto %}
+        <div class="text1-images--button">
+            <a
+                    href="{{ block.linkto.url }}"
+                    {% if block.linkto.target %}target="{{ block.linkto.target }}"{% endif %}
+                    class="button button--primary">
+                {{ block.linkto.text }}
+            </a>
+        </div>
+        {% endif %}
+
+        {% include 'partials/_images-landscape-portrait' with {block:block} %}
+
+    </div>
+
+    {% if craft.request.firstSegment is null %}
+    {% include 'partials/_animated-lines' with {
+        linesType:'left-bottom',
+        text:block.notification
+    } %}
+    {% endif %}
+</section>

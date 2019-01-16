@@ -1,0 +1,15 @@
+.text1-images{
+
+    .text1-images--text1{
+        width:$text1-images-width;
+        padding-bottom:rem(100);
+
+        @media all and (max-width:$medium-breakpoint){
+            width:100%;
+        }
+    }
+    .text1-images--button{
+        margin:rem(-35) 0 rem(100);
+    }
+
+}

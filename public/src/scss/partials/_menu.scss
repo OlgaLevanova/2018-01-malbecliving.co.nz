@@ -1,0 +1,149 @@
+//html {
+//    height: 100vh !important; // dont do this
+//    padding: 0;
+//    margin: 0;
+//    overflow: hidden;
+//    background: #000000;
+//}
+.nav{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:10;
+    width:0;
+    height:100vh;
+    overflow:hidden;
+    color:$white;
+    background:$red;
+
+    .nav-inner{
+        //position:relative;
+        //min-height:100vh;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: auto;
+    }
+    .nav--menu{
+        position:relative;
+        top:50%;
+        left:50%;
+        padding:0;
+        margin:0;
+        letter-spacing:8px;
+        text-align:center;
+        list-style:none;
+        transform:translate(-50%, -50%);
+
+        li{
+            padding-bottom:9px;
+            opacity:0;
+            transform:translateX(-100%);
+            transition:transform 0.3s;
+
+            &.li-1,
+            &.li-2,
+            &.li-3,
+            &.li-4,
+            &.li-5,
+            &.li-6{
+                &.li-show{
+                    opacity:1;
+                    transform:translateX(0);
+                }
+            }
+        }
+        a,
+        span{
+            position:relative;
+            display:inline-block;
+            color:$white;
+            font-family:$FuturaStdBold;
+            font-size:rem(24);
+            text-decoration:none;
+            text-transform:uppercase;
+            -webkit-filter: blur(0);
+            transition:all 0.15s;
+
+            .#{$chLang} &{
+                @include NotoSansBold;
+            }
+
+            &:after{
+                position:absolute;
+                right:5000%;
+                bottom:0;
+                width:5000%;
+                height:3px;
+                background:$white;
+                content:'';
+                opacity:0;
+                transition:all 0.15s;
+            }
+        }
+        span,
+        a:hover{
+            -webkit-filter: blur(0);
+            &:after{
+                right:0;
+                opacity:1;
+            }
+        }
+        a:hover{
+            transform:translateY(-5px);
+        }
+    }
+    .nav--notes{
+        position:absolute;
+        bottom:0;
+        width:100%;
+        padding:0 20px 83px;
+        font-family:$FuturaStdBook;
+        font-size:rem(16);
+        text-align:center;
+        opacity:0;
+        transition:all 0.5s;
+
+        .#{$chLang} &{
+            @include NotoSansReg;
+        }
+
+        &.nav--notes-open{
+            opacity:1;
+        }
+
+        b{
+            font-family:$FuturaStdBold;
+
+            .#{$chLang} &{
+                @include NotoSansBold;
+            }
+        }
+        a{
+            color:$white;
+        }
+    }
+
+    .header{
+        color:$white !important;
+
+        a{
+            color:$white !important;
+        }
+        .header-menu-button{
+            div,
+            &:before,
+            &:after{
+                background:$white !important;
+            }
+        }
+    }
+    .header-logo{
+        path{
+            fill:$white !important;
+        }
+    }
+}

@@ -1,0 +1,47 @@
+.hero-banner{
+    position:relative;
+    height:rem(850);
+
+    @media all and (max-width:$small-breakpoint){
+        height:rem(650);
+    }
+
+    img{
+        width:100%;
+        height:100%;
+        object-fit: cover;
+        object-position: center center;
+        font-family: 'object-fit: cover; object-position: center center;'
+    }
+}
+section.hero-banner .header-lines{
+    position:absolute;
+    top:auto;
+    bottom:17%;
+    left:150px;
+    color:$light-grey;
+    text-align:left;
+    transform:translate(0, 0);
+
+    @media all and (max-width:$small-breakpoint){
+        left:20px;
+    }
+}
+.hero-banner--badge{
+    position:absolute;
+    top:0;
+    right:0;
+    z-index:6;
+    width:rem(172);
+    height:rem(172);
+    margin-top:rem(200);
+
+    svg{
+        width:rem(172);
+        height:rem(172);
+    }
+
+    @media all and (max-width:$small-breakpoint){
+        margin-top:rem(145);
+    }
+}

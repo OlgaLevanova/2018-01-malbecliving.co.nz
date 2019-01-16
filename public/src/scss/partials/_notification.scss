@@ -1,0 +1,29 @@
+.notification{
+    position:relative;
+    display:none;
+    width:100%;
+    overflow:hidden;
+    color:$white;
+    font-family:$FuturaStdBold;
+    font-size:rem(14);
+    line-height:1.71;
+    background:$red;
+
+    .#{$chLang} &{
+        @include NotoSansBold;
+    }
+
+    p{
+        padding:32px 45px 25px 20px;
+        margin:0;
+    }
+    a{
+        color:$white;
+    }
+    .notification--close{
+        position:absolute;
+        top:30px;
+        right:15px;
+        cursor:pointer;
+    }
+}

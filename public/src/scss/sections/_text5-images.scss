@@ -1,0 +1,96 @@
+.text5-images{
+
+    .text5-images--text1{
+        position:relative;
+        padding-bottom:120px;
+
+        @media all and (max-width:$medium-breakpoint){
+            padding-bottom:45px;
+        }
+
+        >div{
+            float:left;
+            width:25%;
+            padding:0 15px;
+
+            @media all and (max-width:$medium-breakpoint){
+                width:100%;
+                padding:0;
+            }
+
+            &.text5-images--block1{
+                width:50%;
+                padding-right:110px;
+
+                @media all and (max-width:$medium-breakpoint){
+                    width:100%;
+                    padding:0 0 40px;
+                }
+            }
+            &.text5-images--block2,
+            &.text5-images--block3{
+                padding-top:79px;
+
+                @media all and (max-width:$medium-breakpoint){
+                    padding-top:0;
+                }
+            }
+            &.text5-images--block2,
+            &.text5-images--block3{
+                padding-bottom:58px;
+            }
+            &.text5-images--block2,
+            &.text5-images--block3,
+            &.text5-images--block4,
+            &.text5-images--block5{
+
+                @media all and (max-width:$medium-breakpoint){
+                    padding-bottom:48px;
+                }
+
+                p{
+                    margin:0;
+                }
+            }
+            &.clear{
+                width:50%;
+                padding:0;
+
+                @media all and (max-width:$medium-breakpoint){
+                    width:100%;
+                }
+            }
+            &.clear-100{
+                float:none;
+                width:100%;
+                clear:both;
+            }
+        }
+        h2{
+            margin:0;
+        }
+    }
+    .text5-images--link{
+        position:absolute;
+        top:rem(-190);
+        left:0;
+        width:100% !important;
+        padding:0 0 rem(110);
+        text-align:right;
+
+        @media all and (max-width:$medium-breakpoint){
+            position:static;
+            display:none;
+            padding:0 0 rem(90);
+            text-align:left;
+        }
+
+        &.show-on-mobile{
+            display:none;
+
+            @media all and (max-width:$medium-breakpoint){
+                display:block;
+            }
+        }
+    }
+}

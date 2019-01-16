@@ -1,0 +1,17 @@
+{% set heroBanner = entry.homepageBanner.banner.first %}
+
+<div class="hero-banner--badge">
+    {% include 'svg/badge.svg' %}
+</div>
+
+<section class="hero-banner">
+    <img src="{{ heroBanner.image.first.url }}" alt="" class="hero-banner--image">
+    <div class="header-lines">
+        {% for line in heroBanner.intoText %}
+            {{ line.line1 }}<br>
+            {{ line.line2 }}<br>
+            {{ line.line3 }}<br>
+            {{ line.line4 }}<br>
+        {% endfor %}
+    </div>
+</section>

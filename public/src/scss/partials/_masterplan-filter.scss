@@ -1,0 +1,202 @@
+.masterplan-filter{
+    display:none;
+    padding:35px 0 85px;
+    overflow:hidden;
+
+    @media all and (max-width:$filter-breakpoint){
+        padding-bottom:45px;
+    }
+
+    &,
+    input {
+        font-family: $FuturaStdBold;
+        font-size: rem(14);
+        text-transform: uppercase;
+    }
+
+    fieldset{
+        border:none;
+    }
+    input{
+        display:block;
+        padding:0;
+        background:transparent;
+        border:none;
+    }
+    label{
+        margin-right:5px;
+    }
+}
+.masterplan-filter--level{
+    float:left;
+    width:35%;
+    padding:0;
+    margin:0;
+
+    @media all and (max-width:$filter-breakpoint){
+        float:none;
+        width:100%;
+    }
+
+    legend{
+        display:none;
+        padding:0;
+        margin:0;
+
+        @media all and (max-width:$filter-breakpoint){
+            display:block;
+            float:left;
+        }
+    }
+    >div{
+        @media all and (max-width:$filter-breakpoint){
+            float:right;
+        }
+    }
+
+    label{
+
+        &:last-child{
+            @media all and (max-width:$filter-breakpoint){
+                margin-right:0 !important;
+            }
+        }
+
+        span{
+            @media all and (max-width:$filter-breakpoint){
+                display:none;
+            }
+        }
+    }
+}
+.masterplan-filter--range{
+    position:relative;
+    float:left;
+    width:145px;
+    padding:5px 0 5px 0;
+    margin:0 0 0 10%;
+
+    @media all and (max-width:$filter-breakpoint){
+        float:none;
+        width:100%;
+        padding-top:40px;
+        margin:0;
+    }
+
+    label{
+        display:inline-block;
+    }
+    .slider-input-min,
+    .slider-input-max,
+    legend{
+        position:absolute;
+        top:4px;
+
+        @media all and (max-width:$filter-breakpoint){
+            position:static;
+        }
+    }
+    legend{
+        right:-180px;
+        line-height:1.15;
+
+        @media all and (max-width:$filter-breakpoint){
+            float:left;
+        }
+    }
+    .masterplan-filter--range-input{
+        line-height:1.15;
+
+        @media all and (max-width:$filter-breakpoint){
+            float:right;
+        }
+    }
+    .masterplan-filter--range-to{
+        display:none;
+
+        @media all and (max-width:$filter-breakpoint){
+            display:inline;
+        }
+    }
+    .slider-input-min{
+        right:100%;
+        margin-right:25px !important;
+
+        @media all and (max-width:$filter-breakpoint){
+            margin-right:0 !important;
+        }
+
+        input{
+            width:100px;
+            padding-right:10px;
+            text-align:right;
+
+            @media all and (max-width:$filter-breakpoint){
+                padding-right:2px;
+            }
+        }
+    }
+    .slider-input-max{
+        left:100%;
+        padding-left:25px;
+
+        @media all and (max-width:$filter-breakpoint){
+            padding-left:2px;
+            margin-right:0 !important;
+
+            input{
+                width:100px;
+            }
+        }
+    }
+    .slider-handles--wrapper{
+        @media all and (max-width:$filter-breakpoint){
+            width:100%;
+            padding:25px 11px 40px;
+            clear:both;
+        }
+    }
+    #slider-handles{
+        width:145px;
+        margin-top:6px;
+
+        @media all and (max-width:$filter-breakpoint){
+            width:100%;
+        }
+    }
+}
+.masterplan-filter--status{
+    float:right;
+    width:33.3333%;
+    padding:0;
+    margin:0;
+    text-align:right;
+
+    @media all and (max-width:$filter-breakpoint){
+        float:none;
+        width:100%;
+        text-align:left;
+    }
+
+    legend{
+        display:none;
+
+        @media all and (max-width:$filter-breakpoint){
+            display:block;
+            float:left;
+        }
+    }
+    >div{
+        @media all and (max-width:$filter-breakpoint){
+            float:right;
+        }
+    }
+    label{
+
+        &:last-child{
+            @media all and (max-width:$filter-breakpoint){
+                margin-right:0 !important;
+            }
+        }
+    }
+}

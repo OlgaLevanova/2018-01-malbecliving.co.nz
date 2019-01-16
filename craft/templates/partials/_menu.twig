@@ -1,0 +1,23 @@
+<nav id="nav" class="nav">
+    <div id="nav-inner" class="nav-inner">
+        <ul id="menu" class="nav--menu">
+            {% set nav = craft.globals.getSetByHandle('menu').menu %}
+            {% for navItem in nav %}
+                <li class="li-{{ loop.index }}">
+                    {% if
+                        craft.request.getSegments[1] is not defined and
+                        ((craft.request.firstSegment is null and navItem.slug == 'homepage') or
+                        navItem.uri == craft.request.firstSegment)
+                    %}
+                        <span class="menu--active">{{ navItem.title|t }}</span>
+                    {% else %}
+                        <a href="{{ navItem.url }}">{{ navItem.title|t }}</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="nav--notes">
+            {{ "Want to know more? Contact us on <a href='tel:0800 88 9000'><b>0800 88 9000</b></a> to talk to one of our team."|t|raw }}
+        </div>
+    </div>
+</nav>
